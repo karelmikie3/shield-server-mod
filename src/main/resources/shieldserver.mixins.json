@@ -13,7 +13,9 @@
     "SignBlockEntityMixin",
     "FireBlockMixin",
     "BlockMixin",
-    "AnvilContainerMixin"
+    "AnvilContainerMixin",
+    "DamageTrackerMixin",
+    "DamageSourceMixin"
   ],
   "client": [
   ],

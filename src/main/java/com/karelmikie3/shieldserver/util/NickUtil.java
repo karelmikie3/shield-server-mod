@@ -72,7 +72,7 @@ public class NickUtil {
             return nicks.getString(uuid);
         } catch (IOException e) {
             e.printStackTrace();
-            return "";
+            return null;
         }
     }
 

@@ -24,5 +24,4 @@ public class ShieldServer implements ModInitializer {
 		CommandRegistry.INSTANCE.register(false, NickCommand::register);
 		CommandRegistry.INSTANCE.register(false, MeCommand::register);
 	}
-
 }
