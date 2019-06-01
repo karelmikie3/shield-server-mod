@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "shieldserver",
+  "version": "${version}",
+
+  "name": "Shield Server Mod",
+  "description": "This is a serverside mod that's used on the Shield Server!",
+  "authors": [
+    "KarelMikie3"
+  ],
+  "contact": {
+    "homepage": "karelmikie3.com",
+    "sources": ""
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/shieldserver/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main" : [
+      "com.karelmikie3.shieldserver.ShieldServer"
+    ]
+  },
+  "mixins": [
+    "shieldserver.mixins.json"
+  ],
+
+  "requires": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}

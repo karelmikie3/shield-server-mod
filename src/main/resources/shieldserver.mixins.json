@@ -1,0 +1,23 @@
+{
+  "required": true,
+  "package": "com.karelmikie3.shieldserver.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ChatMixin",
+    "PlayerListMixin",
+    "SharedConstantsMixin",
+    "PlayerEntityMixin",
+    "EntityMixin",
+    "ServerPlayerInteractionManagerMixin",
+    "ServerPlayNetworkHandlerMixin",
+    "SignBlockEntityMixin",
+    "FireBlockMixin",
+    "BlockMixin",
+    "AnvilContainerMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

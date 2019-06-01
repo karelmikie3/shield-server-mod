@@ -1,0 +1,21 @@
+{
+  "commands.nick.same.self": "You already have the nickname '%s'.",
+  "commands.nick.same.other": "%2$s already has the nickname '%1$s'.",
+  "commands.nick.removed.self": "You removed your nickname.",
+  "commands.nick.removed.other": "You removed %s's nickname.",
+  "commands.nick.set.self": "You set your nickname to '%s'.",
+  "commands.nick.set.other": "You set %2$s's nickname to '%1$s'.",
+  "commands.nick.error.empty": "Nickname may not be blank!",
+  "commands.nick.get.self": "Your nickname is '%s'.",
+  "commands.nick.get.other": "%2$s's nickname is %1$s.",
+  "commands.nick.get.none.self": "You don't have a nickname!",
+  "commands.nick.get.none.other": "%s doesn't have a nickname!",
+
+  "warp.make.nomaterials": "You don't have the materials (Block of Diamond + Ender Chest) to make a warp gate.",
+  "warp.make.alreadylinked": "The warp channel '%s' already has two gates.",
+  "warp.make.invalidportal": "This is not a valid portal!",
+  "warp.make.success": "You successfully created a warp gate on channel '%s'.",
+  "warp.use.success": "You travelled through the warp gate with channel '%s'.",
+  "warp.use.targetnotfound": "Target warp gate not found on channel '%s'.",
+  "warp.removed": "Warp gate on channel '%s' removed."
+}
