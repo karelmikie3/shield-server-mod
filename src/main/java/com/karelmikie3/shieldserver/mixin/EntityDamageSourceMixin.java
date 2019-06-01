@@ -2,8 +2,11 @@ package com.karelmikie3.shieldserver.mixin;
 
 import com.karelmikie3.shieldserver.util.NickUtil;
 import com.karelmikie3.shieldserver.util.TextUtil;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.EntityDamageSource;
+import net.minecraft.item.ItemStack;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -12,11 +15,15 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
-@Mixin(DamageSource.class)
-public class DamageSourceMixin {
+@Mixin(EntityDamageSource.class)
+public class EntityDamageSourceMixin extends DamageSource {
     @Shadow
     @Final
-    public String name;
+    public Entity source;
+
+    public EntityDamageSourceMixin() {
+        super(null);
+    }
 
     @Overwrite
     public Component getDeathMessage(LivingEntity livingEntity_1) {
@@ -27,19 +34,15 @@ public class DamageSourceMixin {
             name = TextUtil.changeToColored(nickUtil.getName());
         }
 
-        LivingEntity livingEntity_2 = livingEntity_1.method_6124();
-        Component name2 = null;
-        if (livingEntity_2 != null) {
-            name2 = livingEntity_2.getDisplayName();
-            if (livingEntity_2 instanceof ServerPlayerEntity) {
-                ServerPlayerEntity player = (ServerPlayerEntity) livingEntity_2;
-                NickUtil nickUtil = new NickUtil(player);
-                name2 = TextUtil.changeToColored(nickUtil.getName());
-            }
+        Component name2 = this.source.getDisplayName();
+        if (this.source instanceof ServerPlayerEntity) {
+            ServerPlayerEntity player = (ServerPlayerEntity) this.source;
+            NickUtil nickUtil = new NickUtil(player);
+            name2 = TextUtil.changeToColored(nickUtil.getName());
         }
 
+        ItemStack itemStack_1 = this.source instanceof LivingEntity ? ((LivingEntity)this.source).getMainHandStack() : ItemStack.EMPTY;
         String string_1 = "death.attack." + this.name;
-        String string_2 = string_1 + ".player";
-        return livingEntity_2 != null ? new TranslatableComponent(string_2, name, name2) : new TranslatableComponent(string_1, name);
+        return !itemStack_1.isEmpty() && itemStack_1.hasDisplayName() ? new TranslatableComponent(string_1 + ".item", name, name2, itemStack_1.toTextComponent()) : new TranslatableComponent(string_1, name, name2);
     }
 }

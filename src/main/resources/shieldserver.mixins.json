@@ -14,9 +14,12 @@
     "FireBlockMixin",
     "BlockMixin",
     "AnvilContainerMixin",
-    "DamageTrackerMixin",
     "DamageSourceMixin",
-    "DamageRecordMixin"
+    "DamageTrackerMixin",
+    "DamageRecordMixin",
+    "NetherBedDamageSourceMixin",
+    "EntityDamageSourceMixin",
+    "ProjectileDamageSourceMixin"
   ],
   "client": [
   ],
