@@ -15,7 +15,8 @@
     "BlockMixin",
     "AnvilContainerMixin",
     "DamageTrackerMixin",
-    "DamageSourceMixin"
+    "DamageSourceMixin",
+    "DamageRecordMixin"
   ],
   "client": [
   ],
