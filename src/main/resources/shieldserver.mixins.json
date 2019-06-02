@@ -19,7 +19,8 @@
     "DamageRecordMixin",
     "NetherBedDamageSourceMixin",
     "EntityDamageSourceMixin",
-    "ProjectileDamageSourceMixin"
+    "ProjectileDamageSourceMixin",
+    "ItemStackMixin"
   ],
   "client": [
   ],
