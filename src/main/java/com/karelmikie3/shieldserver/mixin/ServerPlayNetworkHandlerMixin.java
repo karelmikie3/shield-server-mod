@@ -1,6 +1,5 @@
 package com.karelmikie3.shieldserver.mixin;
 
-import com.google.common.collect.ImmutableList;
 import com.karelmikie3.shieldserver.entity.ShieldServerInteractionManager;
 import com.karelmikie3.shieldserver.entity.ShieldSignBlockEntity;
 import com.karelmikie3.shieldserver.util.WarpUtil;
@@ -11,7 +10,6 @@ import net.minecraft.block.WallSignBlock;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.network.chat.ChatMessageType;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.MinecraftServer;
@@ -30,15 +28,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.karelmikie3.shieldserver.util.WarpUtil.requirements;
+
 @Mixin(ServerPlayNetworkHandler.class)
 public abstract class ServerPlayNetworkHandlerMixin {
-    static {
-        ImmutableList.Builder<ItemStack> builder = new ImmutableList.Builder<>();
-        builder.add(new ItemStack(Items.DIAMOND_BLOCK, 1));
-        builder.add(new ItemStack(Items.ENDER_CHEST, 1));
-        requirements = builder.build();
-    }
-    private static final List<ItemStack> requirements;
 
     @Shadow
     public ServerPlayerEntity player;

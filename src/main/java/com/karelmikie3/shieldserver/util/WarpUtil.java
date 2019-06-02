@@ -1,5 +1,7 @@
 package com.karelmikie3.shieldserver.util;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtIo;
 import net.minecraft.util.Pair;
@@ -9,11 +11,21 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static com.karelmikie3.shieldserver.ShieldServer.SAVE_DIR;
 
 public class WarpUtil {
+    public static final List<ItemStack> requirements;
+
+    static {
+        requirements = new ArrayList<>();
+        requirements.add(new ItemStack(Items.DIAMOND_BLOCK, 1));
+        requirements.add(new ItemStack(Items.ENDER_CHEST, 1));
+    }
+
     private static final File warpData = new File(SAVE_DIR, "data/warp.dat");
 
     static {

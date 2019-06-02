@@ -14,6 +14,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import static com.karelmikie3.shieldserver.util.WarpUtil.requirements;
+
 @Mixin(Block.class)
 public class BlockMixin {
     @Inject(at = @At("HEAD"), method = "onBlockRemoved")
@@ -23,8 +25,6 @@ public class BlockMixin {
             BlockEntity blockEntity = world.getBlockEntity(pos);
 
             if (blockEntity instanceof SignBlockEntity) {
-
-
                 SignBlockEntity signBlockEntity = (SignBlockEntity) blockEntity;
                 ShieldSignBlockEntity shieldSignBlockEntity = (ShieldSignBlockEntity) signBlockEntity;
 
@@ -36,6 +36,8 @@ public class BlockMixin {
                     System.out.println("Removing warp gate!");
 
                     shieldSignBlockEntity.setGateState(ShieldSignBlockEntity.GateState.REMOVED);
+
+                    requirements.forEach(stack -> Block.dropStack(world, pos, stack));
                 }
             } else {
                 System.err.println("No block entity for broken sign!");
